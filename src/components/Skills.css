@@ -1,0 +1,302 @@
+.skills-section {
+  min-height: 100vh;
+  padding: var(--space-3xl) var(--space-xl);
+  background-color: var(--color-bg);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.skills-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(ellipse at top left, rgba(139, 115, 85, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(122, 93, 71, 0.08) 0%, transparent 50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.skills-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(30deg, transparent 12%, rgba(139, 115, 85, 0.03) 12.5%, rgba(139, 115, 85, 0.03) 13%, transparent 13.5%),
+    linear-gradient(150deg, transparent 12%, rgba(122, 93, 71, 0.03) 12.5%, rgba(122, 93, 71, 0.03) 13%, transparent 13.5%),
+    linear-gradient(30deg, transparent 37%, rgba(107, 87, 68, 0.02) 37.5%, rgba(107, 87, 68, 0.02) 38%, transparent 38.5%),
+    linear-gradient(150deg, transparent 37%, rgba(139, 115, 85, 0.02) 37.5%, rgba(139, 115, 85, 0.02) 38%, transparent 38.5%);
+  background-size: 70px 120px;
+  z-index: 0;
+  pointer-events: none;
+  animation: skillsPattern 25s linear infinite;
+}
+
+@keyframes skillsPattern {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 70px 120px;
+  }
+}
+
+.skills-section .wave-decoration {
+  position: absolute;
+  width: 100%;
+  height: 180px;
+  top: -1px;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.skills-section .wave-decoration svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--color-bg-secondary);
+  transform: rotate(180deg);
+}
+
+.skills-container {
+  max-width: calc(100vw * 0.85);
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.skills-intro {
+  font-size: calc(var(--text-lg) * 0.94);
+  line-height: calc(var(--phi) * 0.94);
+  color: var(--color-text-secondary);
+  max-width: calc(100% * var(--phi-inverse));
+  margin-bottom: var(--space-3xl);
+  font-weight: 400;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-3xl);
+}
+
+.skill-category {
+  background: rgba(139, 115, 85, 0.03);
+  border: 1px solid rgba(139, 115, 85, 0.15);
+  padding: var(--space-xl);
+  border-radius: 4px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-category:hover {
+  background: rgba(139, 115, 85, 0.06);
+  border-color: rgba(139, 115, 85, 0.25);
+  transform: translateY(-4px);
+}
+
+.category-title {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 2px solid var(--color-primary);
+  letter-spacing: -0.01em;
+}
+
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-xs);
+}
+
+.skill-name {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.skill-percentage {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.skill-bar-container {
+  width: 100%;
+  height: 6px;
+  background: rgba(139, 115, 85, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-bar {
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-accent)
+  );
+  border-radius: 3px;
+  position: relative;
+}
+
+.skill-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skills-footer {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+}
+
+.learning-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg) var(--space-2xl);
+  background: rgba(139, 115, 85, 0.08);
+  border: 1px solid rgba(139, 115, 85, 0.2);
+  border-radius: 50px;
+}
+
+.badge-icon {
+  font-size: var(--text-xl);
+}
+
+.badge-text {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .skills-section {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+
+  .skills-intro {
+    font-size: var(--text-base);
+    max-width: 100%;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .skill-category {
+    padding: var(--space-lg);
+  }
+
+  .category-title {
+    font-size: var(--text-lg);
+  }
+
+  .learning-badge {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .badge-text {
+    font-size: var(--text-sm);
+  }
+}
+
+
+.skills-section .floating-element {
+  position: absolute;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.skills-section .element-1 {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  top: 20%;
+  left: 10%;
+  animation: morph1 15s ease-in-out infinite;
+}
+
+.skills-section .element-2 {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(225deg, var(--color-accent) 0%, var(--color-primary-dark) 100%);
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  bottom: 25%;
+  right: 15%;
+  animation: morph2 18s ease-in-out infinite;
+}
+
+@keyframes morph1 {
+  0%, 100% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    transform: rotate(0deg) translate(0, 0);
+  }
+  50% {
+    border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+    transform: rotate(180deg) translate(20px, -20px);
+  }
+}
+
+@keyframes morph2 {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    transform: rotate(-180deg) scale(1.2);
+  }
+}

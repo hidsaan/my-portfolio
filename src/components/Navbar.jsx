@@ -17,6 +17,12 @@ const Navbar = () => {
   const handleNavClick = (itemId) => {
     setActiveItem(itemId);
     setIsMobileMenuOpen(false);
+    
+    // Smooth scroll to section
+    const element = document.getElementById(itemId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   const toggleMobileMenu = () => {
@@ -34,6 +40,25 @@ const Navbar = () => {
       document.body.style.overflow = 'unset';
     };
   }, [isMobileMenuOpen]);
+
+  // Scroll spy to update active nav item
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navItems.map(item => document.getElementById(item.id));
+      const scrollPosition = window.scrollY + 100;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveItem(navItems[i].id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [navItems]);
 
   return (
     <>

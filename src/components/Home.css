@@ -53,8 +53,12 @@ body {
 }
 
 .home-container {
-  min-height: 100vh;
   background-color: var(--color-bg);
+  position: relative;
+}
+
+.hero-wrapper {
+  min-height: 100vh;
   position: relative;
   overflow: hidden;
 }
