@@ -12,35 +12,51 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      category: 'Web Development',
-      description: 'A full-featured online shopping platform with real-time inventory management and secure payment integration.',
-      tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      title: 'TechLord',
+      category: 'Full Stack Web Development',
+      description: 'An e-commerce platform for buying and selling tech with a holistic approach. Connect with experts, find service centers, and explore every aspect of technology using high-end secure solutions.',
+      tech: ['React', 'Node.js', 'MongoDB', 'Redux'],
       color: 'rgba(139, 115, 85, 0.1)'
     },
     {
       id: 2,
-      title: 'Fitness Tracking App',
+      title: 'Rahvaan',
       category: 'Mobile Development',
-      description: 'Cross-platform mobile app for tracking workouts, nutrition, and health metrics with social features.',
-      tech: ['React Native', 'Firebase', 'Redux'],
+      description: 'A comprehensive taxi service mobile app built for a client, featuring separate driver and traveller portals with in-app payments, real-time chat, and seamless booking system.',
+      tech: ['Expo', 'React Native', 'Socket.io', 'Redux'],
       color: 'rgba(122, 93, 71, 0.1)'
     },
     {
       id: 3,
-      title: 'Portfolio CMS',
-      category: 'Full Stack',
-      description: 'Content management system for creative professionals to showcase their work with customizable themes.',
-      tech: ['Next.js', 'PostgreSQL', 'Tailwind'],
+      title: 'ILS Imperia',
+      category: 'Mobile Development',
+      description: 'A tech-focused e-learning LMS built for a client, featuring comprehensive course management, in-app payment integration, and interactive learning experiences.',
+      tech: ['React Native', 'Redux'],
       color: 'rgba(107, 87, 68, 0.1)'
     },
     {
       id: 4,
-      title: 'Real-Time Chat',
-      category: 'Web Development',
-      description: 'Instant messaging platform with end-to-end encryption, file sharing, and video call capabilities.',
-      tech: ['Socket.io', 'Express', 'WebRTC'],
+      title: 'ILS Plasma',
+      category: 'Mobile Development',
+      description: 'A React Native e-learning LMS built for in-house students of the client organization, providing tech-focused learning experiences tailored for internal training and development.',
+      tech: ['React Native', 'Redux'],
       color: 'rgba(139, 115, 85, 0.1)'
+    },
+    {
+      id: 5,
+      title: 'ILS Adzura',
+      category: 'Mobile Development',
+      description: 'A webview application built in React Native for a client, featuring comprehensive lead management system to streamline sales processes and customer relationship management.',
+      tech: ['React Native', 'WebView', 'Redux'],
+      color: 'rgba(122, 93, 71, 0.1)'
+    },
+    {
+      id: 6,
+      title: 'UTF Health Desk',
+      category: 'Mobile Development',
+      description: 'A webview application built in React Native for a client, providing comprehensive clinic management with seamless booking and appointment scheduling capabilities.',
+      tech: ['React Native', 'WebView', 'Redux'],
+      color: 'rgba(107, 87, 68, 0.1)'
     }
   ];
 
@@ -126,8 +142,11 @@ const Projects = () => {
 
         <motion.div className="projects-cta" variants={itemVariants}>
           <p className="cta-text">Want to see more?</p>
-          <button className="view-all-btn">
-            <span>View All Projects</span>
+          <button 
+            className="view-all-btn"
+            onClick={() => window.open('https://github.com/hidsaan', '_blank')}
+          >
+            <span>Visit my GitHub</span>
             <span className="btn-icon">↗</span>
           </button>
         </motion.div>

@@ -88,11 +88,11 @@ const About = () => {
         </div>
 
         <motion.div className="about-stats" variants={itemVariants}>
-          <div className="stat-item">
+          {/* <div className="stat-item">
             <span className="stat-number">3+</span>
             <span className="stat-label">Years Experience</span>
-          </div>
-          <div className="stat-divider"></div>
+          </div> */}
+          {/* <div className="stat-divider"></div> */}
           <div className="stat-item">
             <span className="stat-number">50+</span>
             <span className="stat-label">Projects Completed</span>

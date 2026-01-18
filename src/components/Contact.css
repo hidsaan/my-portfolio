@@ -119,6 +119,12 @@
   border-radius: 4px;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: inherit;
+}
+
+.contact-method:visited,
+.contact-method:active {
+  color: inherit;
 }
 
 .contact-method:hover {
@@ -130,6 +136,14 @@
 .method-icon {
   font-size: var(--text-2xl);
   flex-shrink: 0;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.method-icon svg {
+  color: var(--color-primary);
 }
 
 .method-info {

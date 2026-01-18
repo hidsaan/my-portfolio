@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { HiMail } from 'react-icons/hi';
+import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
 import './Contact.css';
 
 const Contact = () => {
@@ -50,10 +52,10 @@ const Contact = () => {
   };
 
   const contactMethods = [
-    { icon: '📧', label: 'Email', value: 'hello@hidsaan.dev', link: 'mailto:hello@hidsaan.dev' },
-    { icon: '💼', label: 'LinkedIn', value: 'linkedin.com/in/hidsaan', link: '#' },
-    { icon: '🐙', label: 'GitHub', value: 'github.com/hidsaan', link: '#' },
-    { icon: '🎨', label: 'Dribbble', value: 'dribbble.com/hidsaan', link: '#' }
+    { icon: <HiMail />, label: 'Email', value: 'hidsaanmajeed427226@gmail.com', link: 'mailto:hidsaanmajeed427226@gmail.com' },
+    { icon: <FaLinkedin />, label: 'LinkedIn', value: 'linkedin.com/hidsaan-majeed', link: 'https://www.linkedin.com/in/hidsaan-majeed-7a0456135/' },
+    { icon: <FaGithub />, label: 'GitHub', value: 'github.com/hidsaan', link: 'https://github.com/hidsaan' },
+    { icon: <FaInstagram />, label: 'Instagram', value: 'instagram.com/justajourney', link: 'https://www.instagram.com/justajourn.ey/' }
   ];
 
   return (

@@ -14,7 +14,7 @@ const Skills = () => {
       title: 'Frontend',
       skills: [
         { name: 'React', level: 95 },
-        { name: 'JavaScript/TypeScript', level: 90 },
+        { name: 'JavaScript', level: 90 },
         { name: 'HTML/CSS', level: 95 },
         { name: 'Next.js', level: 85 },
         { name: 'Tailwind CSS', level: 90 }
@@ -24,7 +24,6 @@ const Skills = () => {
       title: 'Mobile',
       skills: [
         { name: 'React Native', level: 88 },
-        { name: 'Flutter', level: 75 },
         { name: 'iOS/Android', level: 80 },
         { name: 'Expo', level: 85 }
       ]
@@ -35,7 +34,6 @@ const Skills = () => {
         { name: 'Node.js', level: 85 },
         { name: 'Express', level: 88 },
         { name: 'MongoDB', level: 82 },
-        { name: 'PostgreSQL', level: 80 },
         { name: 'REST APIs', level: 90 }
       ]
     },
@@ -43,10 +41,10 @@ const Skills = () => {
       title: 'Tools & Others',
       skills: [
         { name: 'Git/GitHub', level: 92 },
-        { name: 'Figma', level: 88 },
-        { name: 'Adobe Creative Suite', level: 85 },
-        { name: 'Firebase', level: 83 },
-        { name: 'Docker', level: 70 }
+        // { name: 'Figma', level: 88 },
+        { name: 'Canva', level: 90 },
+        // { name: 'Firebase', level: 83 },
+        { name: 'AWS', level: 90 }
       ]
     }
   ];
@@ -133,12 +131,12 @@ const Skills = () => {
           ))}
         </div>
 
-        <motion.div className="skills-footer" variants={itemVariants}>
+        {/* <motion.div className="skills-footer" variants={itemVariants}>
           <div className="learning-badge">
             <span className="badge-icon">📚</span>
             <p className="badge-text">Always learning, always growing</p>
           </div>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </section>
   );

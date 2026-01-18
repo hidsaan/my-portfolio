@@ -77,6 +77,7 @@ const ArtGallery = () => {
               onClick={() => setSelectedImage(artwork)}
             >
               <div className="artwork-image" style={{ backgroundColor: artwork.color }}>
+                <div className="coming-soon-label">Coming Soon</div>
                 <div className="artwork-overlay">
                   <span className="view-icon">👁</span>
                 </div>

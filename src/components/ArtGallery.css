@@ -127,6 +127,24 @@
   overflow: hidden;
 }
 
+.coming-soon-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(45, 36, 25, 0.85);
+  color: var(--color-bg);
+  padding: var(--space-md) var(--space-xl);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: 2px solid rgba(139, 115, 85, 0.5);
+  z-index: 2;
+  pointer-events: none;
+}
+
 .artwork-overlay {
   position: absolute;
   inset: 0;
