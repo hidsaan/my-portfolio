@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './Navbar.css';
 
 const Navbar = () => {
   const [activeItem, setActiveItem] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const navItems = [
+  const navItems = useMemo(() => [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'projects', label: 'Projects' },
     { id: 'skills', label: 'Skills and Stack' },
     { id: 'contact', label: 'Contact' },
     { id: 'artgallery', label: 'Art Gallery' }
-  ];
+  ], []);
 
   const handleNavClick = (itemId) => {
     setActiveItem(itemId);
