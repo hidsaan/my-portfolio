@@ -6,6 +6,7 @@ import Projects from './Projects';
 import Skills from './Skills';
 import Contact from './Contact';
 import ArtGallery from './ArtGallery';
+import Footer from './Footer';
 
 const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -94,6 +95,9 @@ const Home = () => {
       <Skills />
       <Contact />
       <ArtGallery />
+      
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
