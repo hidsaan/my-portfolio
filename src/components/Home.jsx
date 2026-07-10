@@ -5,11 +5,14 @@ import About from './About';
 import Projects from './Projects';
 import Skills from './Skills';
 import Contact from './Contact';
+import Blogs from './Blogs';
 import ArtGallery from './ArtGallery';
 import Footer from './Footer';
+import ContactModal from './ContactModal';
 
 const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -39,7 +42,7 @@ const Home = () => {
         {/* Main content */}
         <div className={`content-wrapper ${isLoaded ? 'loaded' : ''}`}>
           {/* Small accent line - Golden ratio positioning */}
-          <div className="accent-line"></div>
+          {/* <div className="accent-line"></div> */}
           
           {/* Hero Section */}
           <section className="hero-section">
@@ -79,6 +82,10 @@ const Home = () => {
               <span className="btn-text">Explore My Work</span>
               <span className="btn-arrow">→</span>
             </button>
+            <button className="communicate-btn" onClick={() => setIsModalOpen(true)}>
+              <span className="btn-text">Let's Communicate</span>
+              <span className="btn-arrow">→</span>
+            </button>
           </section>
 
           {/* Footer note */}
@@ -94,10 +101,14 @@ const Home = () => {
       <Projects />
       <Skills />
       <Contact />
+      <Blogs />
       <ArtGallery />
       
       {/* Footer */}
       <Footer />
+
+      {/* Contact Modal */}
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };

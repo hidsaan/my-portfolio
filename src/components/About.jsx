@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaBolt, FaPalette, FaMobileAlt } from 'react-icons/fa';
+import ContactModal from './ContactModal';
 import './About.css';
 
 const About = () => {
@@ -9,6 +10,8 @@ const About = () => {
     threshold: 0.2,
     triggerOnce: true
   });
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -58,7 +61,7 @@ const About = () => {
         <div className="about-content">
           <motion.div className="about-text-block" variants={itemVariants}>
             <p className="about-paragraph">
-              I'm a passionate developer who believes in the intersection of functionality and aesthetics. 
+              I'm a developer who believes in the intersection of functionality and aesthetics. 
               With a keen eye for design and a love for clean code, I create digital experiences that 
               not only work flawlessly but also feel intuitive and beautiful.
             </p>
@@ -69,6 +72,15 @@ const About = () => {
             </p>
           </motion.div>
 
+          <motion.div className="about-image" variants={itemVariants}>
+            <img src="/mobilePhone.png" alt="Mobile Development" className="mobile-phone-img" />
+            <button className="get-one-btn" onClick={() => setIsModalOpen(true)}>
+              Get One for Yourself
+            </button>
+          </motion.div>
+        </div>
+
+        <div className="about-highlights-section">
           <motion.div className="about-highlights" variants={itemVariants}>
             <div className="highlight-card">
               <div className="highlight-icon"><FaBolt /></div>
@@ -105,6 +117,8 @@ const About = () => {
           </div>
         </motion.div>
       </motion.div>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };
