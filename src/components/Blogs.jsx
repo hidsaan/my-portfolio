@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -13,63 +13,37 @@ const Blogs = () => {
 
   const [scrollPosition, setScrollPosition] = useState(0);
   const scrollContainerRef = useRef(null);
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const blogs = [
-    {
-      id: 1,
-      title: 'Building Scalable React Applications',
-      category: 'Web Development',
-      date: 'March 15, 2024',
-      excerpt: 'Exploring best practices and patterns for building maintainable and scalable React applications with modern tools and techniques.',
-      readTime: '8 min read',
-      tags: ['React', 'Architecture', 'Best Practices']
-    },
-    {
-      id: 2,
-      title: 'The Art of Mobile-First Design',
-      category: 'UI/UX Design',
-      date: 'February 28, 2024',
-      excerpt: 'A comprehensive guide to designing beautiful and functional mobile experiences that prioritize user needs and accessibility.',
-      readTime: '6 min read',
-      tags: ['Mobile', 'Design', 'UX']
-    },
-    {
-      id: 3,
-      title: 'Mastering State Management in React Native',
-      category: 'Mobile Development',
-      date: 'February 10, 2024',
-      excerpt: 'Deep dive into various state management solutions for React Native apps, comparing Redux, Context API, and modern alternatives.',
-      readTime: '10 min read',
-      tags: ['React Native', 'Redux', 'State Management']
-    },
-    {
-      id: 4,
-      title: 'Creative Coding: Where Art Meets Technology',
-      category: 'Creative Development',
-      date: 'January 22, 2024',
-      excerpt: 'Exploring the intersection of programming and visual arts, using code as a medium for creative expression and digital art.',
-      readTime: '7 min read',
-      tags: ['Creative Coding', 'Art', 'JavaScript']
-    },
-    {
-      id: 5,
-      title: 'Building Real-Time Features with Socket.io',
-      category: 'Backend Development',
-      date: 'January 5, 2024',
-      excerpt: 'Learn how to implement real-time chat, notifications, and live updates in your applications using Socket.io and Node.js.',
-      readTime: '9 min read',
-      tags: ['Socket.io', 'Node.js', 'Real-time']
-    },
-    {
-      id: 6,
-      title: 'Performance Optimization Tips for Web Apps',
-      category: 'Web Development',
-      date: 'December 18, 2023',
-      excerpt: 'Practical techniques and tools to optimize your web applications for better performance, faster load times, and improved user experience.',
-      readTime: '8 min read',
-      tags: ['Performance', 'Optimization', 'Web']
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
+  const fetchBlogs = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/blogs');
+      if (response.ok) {
+        const data = await response.json();
+        setBlogs(data);
+      } else {
+        console.error('Failed to fetch blogs');
+      }
+    } catch (err) {
+      console.error('Error fetching blogs:', err);
+    } finally {
+      setLoading(false);
     }
-  ];
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -143,7 +117,14 @@ const Blogs = () => {
           Thoughts, tutorials, and stories from my journey in tech and creativity.
         </motion.p>
 
-        <div className="carousel-wrapper">
+        {loading ? (
+          <div className="blogs-loading">Loading blogs...</div>
+        ) : blogs.length === 0 ? (
+          <div className="no-blogs-message">
+            <p>No blogs available yet. Check back soon!</p>
+          </div>
+        ) : (
+          <div className="carousel-wrapper">
           {!isAtStart && (
             <button 
               className="carousel-arrow carousel-arrow-left"
@@ -161,15 +142,16 @@ const Blogs = () => {
           >
             {blogs.map((blog) => (
               <motion.article
-                key={blog.id}
+                key={blog._id}
                 className="blog-card"
                 variants={itemVariants}
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.3 }}
+                onClick={() => navigate(`/blog/${blog._id}`)}
               >
                 <div className="blog-header">
                   <span className="blog-category">{blog.category}</span>
-                  <span className="blog-date">{blog.date}</span>
+                  <span className="blog-date">{formatDate(blog.createdAt)}</span>
                 </div>
                 
                 <h3 className="blog-title">{blog.title}</h3>
@@ -202,6 +184,7 @@ const Blogs = () => {
             </button>
           )}
         </div>
+        )}
 
         <motion.div className="blogs-cta" variants={itemVariants}>
           <p className="cta-text">More articles coming soon</p>

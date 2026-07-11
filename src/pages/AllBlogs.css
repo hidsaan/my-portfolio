@@ -196,6 +196,22 @@
   transform: translateX(4px);
 }
 
+/* Loading and Empty States */
+.all-blogs-loading,
+.no-blogs-message {
+  text-align: center;
+  padding: 80px 20px;
+  font-size: 18px;
+  color: #8b7355;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.no-blogs-message p {
+  margin: 0;
+  color: #666;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .all-blogs-grid {

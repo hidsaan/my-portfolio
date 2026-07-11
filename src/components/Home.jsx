@@ -18,6 +18,15 @@ const Home = () => {
     setIsLoaded(true);
   }, []);
 
+  // Auto-open ContactModal on first load
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsModalOpen(true);
+    }, 2500); // Open modal after loader finishes (2000ms loader + 500ms delay)
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -100,8 +109,8 @@ const Home = () => {
       <About />
       <Projects />
       <Skills />
-      <Contact />
       <Blogs />
+      <Contact />
       <ArtGallery />
       
       {/* Footer */}

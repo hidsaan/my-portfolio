@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { FiLock } from 'react-icons/fi';
 import './Navbar.css';
 
 const Navbar = () => {
   const [activeItem, setActiveItem] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // const navigate = useNavigate();
 
   const navItems = useMemo(() => [
     { id: 'home', label: 'Home' },
@@ -25,6 +28,11 @@ const Navbar = () => {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+
+  // const handleAdminClick = () => {
+  //   setIsMobileMenuOpen(false);
+  //   navigate('/me');
+  // };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -65,6 +73,15 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="nav-container">
+          {/* Logo - Separate from nav list */}
+          <button
+            className="logo-button"
+            onClick={() => handleNavClick('home')}
+            aria-label="Go to home"
+          >
+            <img src={`${process.env.PUBLIC_URL}/nobgLogo.png`} alt="Logo" className="navbar-logo" />
+          </button>
+          
           {/* Desktop Navigation */}
           <ul className="nav-list desktop-nav">
             {navItems.map((item) => (
@@ -78,6 +95,15 @@ const Navbar = () => {
                 </button>
               </li>
             ))}
+            {/* <li className="nav-item">
+              <button
+                className="nav-link admin-link"
+                onClick={handleAdminClick}
+                title="Admin Login"
+              >
+                <FiLock className="admin-icon" />
+              </button>
+            </li> */}
           </ul>
         </div>
       </nav>
@@ -108,6 +134,15 @@ const Navbar = () => {
                 </button>
               </li>
             ))}
+            {/*<li className="mobile-nav-item">
+              <button
+                className="mobile-nav-link admin-link-mobile"
+                onClick={handleAdminClick}
+              >
+                <FiLock className="admin-icon-mobile" />
+                <span className="mobile-nav-text">Admin Login</span>
+              </button>
+            </li>*/}
           </ul>
         </div>
       </div>

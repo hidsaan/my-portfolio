@@ -32,6 +32,9 @@
   max-width: calc(100vw * 0.85);
   margin: 0 auto;
   padding: 0 var(--space-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .nav-list {
@@ -483,5 +486,81 @@
   .mobile-active-indicator {
     width: 3px;
     height: 50%;
+  }
+}
+
+/* Admin Link Styling */
+.admin-link {
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-text-light);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-link:hover {
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.admin-icon {
+  font-size: var(--text-base);
+  transition: transform 0.3s ease;
+}
+
+.admin-link:hover .admin-icon {
+  transform: scale(1.1);
+}
+
+/* Mobile Admin Link */
+.admin-link-mobile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding-top: var(--space-lg);
+  margin-top: var(--space-lg);
+  border-top: 1px solid rgba(139, 115, 85, 0.2);
+}
+
+.admin-icon-mobile {
+  font-size: var(--text-base);
+}
+
+/* Logo Styles */
+.logo-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.logo-button:hover {
+  transform: scale(1.08);
+}
+
+.navbar-logo {
+  height: 50px;
+  width: auto;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.logo-button:hover .navbar-logo {
+  opacity: 0.85;
+}
+
+/* Responsive logo sizes */
+@media (min-width: 1920px) {
+  .navbar-logo {
+    height: 55px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar-logo {
+    height: 42px;
   }
 }
